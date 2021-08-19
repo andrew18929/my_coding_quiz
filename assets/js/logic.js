@@ -24,7 +24,10 @@ function startQuiz() {
         clockCountdown();
     }, 1000);
 // make sure to show starting time
+    timerEl.textContent = time;
+
 // call function to get questions
+    getQuestion();
 }
 
 
@@ -58,20 +61,27 @@ function startQuiz() {
 // hide questions section
 // end function
 
-// create function for timer count down
-// update time
-// check if time ran out
-// end function
+// function for timer clockCountdown()
+function clockCountdown() {
+    // make sure to update time
+    time--;
+    timerEl.textContent = time + "seconds till your time expires!";
+    // if statement to check if quiz ran out of time
+    if (time === 0) {
+        quizEnd();
+    }
+}
 
 // create fuction for highscore
 // get value of initials imput
 // make sure value is not an empty string by using if statement
+// get saved scores from localStorage
+// format new score object for current user
+// save to local storage
+// redirect to the highscores.html page
+// end function
 
-
-// function for timer clockCountdown()
-
-
-
+// click button for user to store initials
 
 // click button to start quiz
 submitBtn.onclick = startQuiz;
