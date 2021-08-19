@@ -91,7 +91,7 @@ function startQuiz() {
 
 // call function to get questions
     getQuestions();
-}
+} // end startQuiz()
 
 
 
@@ -131,24 +131,55 @@ function getQuestions() {
 
 
 // create a function to track right and wrong answers 
-// check to see if answer is wrong using if statemet
-// penalty
-// display feedback on page
-//else
-// display other feedback
-// flash right/wrong feedback on page for a secod
-// move to next question
-// check to see if there are any more questions using if statement
-// if none quiz end
-// else get next question
-// end function
+function chosenAnswer(answerChoice) {
+    // check to see if answer is wrong using if statement
+    if(answerChoice.textContent != questions[currentQuestionIndex].answer) {
+        // penalty on time if answered wrong
+        time -= 10;
+        // display feedback on page
+        feedbackEl.textContent = "Incorrect";
+    }    
+    //else
+    else {
+        // display other feedback
+        feedbackEl.textContent = "Correct";
+    }
+
+    // flash right/wrong feedback on page for a second
+    feedbackEl.setAttribute("class", "feedback");
+    setInterval(function() {
+        feedbackEl.setAttribute("class", "feedback hide");
+    }, 1000);
+
+    // move to next question
+    currentQuestionIndex++;
+
+    // check to see if there are any more questions using if statement
+    if (currentQuestionIndex === questions.length) {
+      // if none quiz end
+      quizEnd();
+    } else { // else get next question
+        getQuestions();
+    }
+} // end chosenAnswer()
 
 // create function to end the quiz
-// stop timer
-// show end screen
-// show final score
-// hide questions section
-// end function
+function quizEnd() {
+    // stop timer
+    clearInterval(timerId);
+    timerEl.textContent = time;
+
+    // show end screen
+    var endScreenEl = document.getElementById("end");
+    endScreenEl.setAttribute("clas", " ");
+
+    // show final score after quiz is done
+    var finalScoreEl = document.getElementById("score");
+    finalScoreEl.textContent = time;
+
+    // hide questions section
+    questionsEl.setAttribute("class", "hide");
+}// end quizEnd()
 
 // function for timer clockCountdown()
 function clockCountdown() {
