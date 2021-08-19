@@ -12,6 +12,69 @@ var currentQuestionIndex = 0;
 var time = questions.length * 15;
 var timerId;
 
+// list of the questions I will use for the coding quiz
+var questions = [
+    {
+        title: "What are variables used for in JavsScript",
+        choices: ["For changing language settings", "For storing or holding data", "For changing a value's data type", "For deleting information"],
+        answer: "For storing or holding data"
+    },
+
+    {
+        title: "Commonly used data types DO NOT include:",
+        choices: ["strings", "booleans", "alerts", "numbers"],
+        answer: "alerts"
+    },
+
+    {
+        title: "The condition of an if/else statment is enclosed within ______",
+        choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
+        answer: "parentheses"
+    },
+
+    {
+        title: "Arrays in JavaScript can be used to store",
+        choices: ["numbers and strings", "other arrays", "booleans", "all of the above"],
+        answer: "all of the above"
+    },
+
+    {
+        title: "A very useful tool used during development and debugging for printing content to the debugger is:",
+        choices: ["JavaScript", "terminal / bash", "for loops", "console.log"],
+        answer: "console.log"
+    },
+
+    {
+        title: "Which of the following is an example of a single line comment:",
+        choices: ["'Is this a comment?'", "// Is this a comment?", "console.log('Is this a comment?');", "console.log"],
+        answer: "// Is this a comment?"
+    },
+
+    {
+        title: "What is string concatenation",
+        choices: ["When you assign a string to a variable", "When you change a variable's value", "When you join strings together", "When you print a string to the console"],
+        answer: "When you join strings together"
+    },
+
+    {
+        title: "What is the correct way to call the random method on the Math global object?",
+        choices: ["math.random()", "Math(random)", "random.Math()", "Math.random()"],
+        answer: "Math.random()"
+    },
+
+    {
+        title: "What is the correct way to declare a new variable that you can change?",
+        choices: ["const myName = 'Andrew';", "let myName = 'Andrew';", "myName = 'Andrew';", "let myName: 'Andrew';"],
+        answer: "let myName = 'Andrew';"
+    },
+
+    {
+        title: "String values must be enclosed within _______ when being assigned to variables.",
+        choices: ["commas", "curly brackets", "quotes", "parentheses"],
+        answer: "quotes"
+    },
+]
+
 // begin quiz using a function startQuiz()
 function startQuiz() {
 // make sure to hide the start screen when quiz begins
@@ -27,19 +90,45 @@ function startQuiz() {
     timerEl.textContent = time;
 
 // call function to get questions
-    getQuestion();
+    getQuestions();
 }
 
 
-// function to get questions getQuestion()
-// optional: see if you can get questions at random
-// make sure to update the title section with the current question
-// make sure to clear out any old questions and choices
-// create a for loop to loop over choices
-// make sure to create a new button for each choice
-// make sure to display choices on the screen
-// need to attach an eventListener to each choice
-// end function
+
+// function to get questions getQuestions()
+function getQuestions() {
+    // get current question from array -optional: see if you can get questions at random
+    var currentQuestion = questions[currentQuestionIndex];
+    // make sure to update the title section with the current question
+    questionsEl.children[0].textContent = currentQuestion.title;
+    // make sure to clear out any old questions and choices
+    while (choicesEl.hasChildNodes()) {
+        choicesEl.removeChild(choicesEl.lastChild);
+    }
+    // create a for loop to loop over choices
+    for (var i = 0; i < currentQuestion.choices.length; i++) {
+        // make sure to create a new button for each choice
+        var userChoice = document.createElement("button");
+        userChoice.textContent = currentQuestion.choices[i];
+        // make sure to display choices on the screen
+        choicesEl.appendChild(userChoice);
+    }
+
+    // make sure to create a new button for each choice
+    choicesEl.children[0].addEventListener("click", function(event) {
+        chosenAnswer(choicesEl.children[0]);
+    });
+    choicesEl.children[1].addEventListener("click", function(event) {
+        chosenAnswer(choicesEl.children[1]);
+    });
+    choicesEl.children[2].addEventListener("click", function(event) {
+        chosenAnswer(choicesEl.children[2]);
+    });
+    choicesEl.children[3].addEventListener("click", function(event) {
+        chosenAnswer(choicesEl.children[3]);
+    });
+} // end getQuestions()
+
 
 // create a function to track right and wrong answers 
 // check to see if answer is wrong using if statemet
