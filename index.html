@@ -1,39 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fundamentals of JS Quiz</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Fundamental of JS Quiz</title>
     <link rel="stylesheet" href="./assets/css/style.css" />
-</head>
+  </head>
 
-<body>
-    <div class="scores"><a href="./high_scores.html">Check Out The Highscores</a></div>
-    <div class="timer">Time: <span id="timer">0</span></div>
+  <body>
+    <div class="scores"><a href="high_scores.html">Check Out The High Scores</a></div>
+    <div class="timer">Time Remaining: <span id="timer">0</span></div>
     <div class="intro">
-        <div id="start" class="start">
-            <h1>Fundamentals of JS Coding Quiz Challenge</h1>
-            <p>See if you can answer the following JS code-related questions in the time given. But be aware, incorrect answers will penalize you by ten seconds! Good Luck!</p>
-            <button id="begin">Begin</button>
-        </div>
+      <div id="opening-screen" class="start">
+        <h1>Fundamentals of JS Coding Quiz Challenge</h1>
+        <p>
+            See if you can answer the following JS code-related questions in the time given. 
+            But be aware, incorrect answers will penalize you by ten seconds! Good Luck!
+        </p>
+        <button id="begin">Begin</button>
+      </div>
 
-        <div id="quiz-questions" class="hide">
-            <h2 id="question-title"></h2>
-            <div id="choices" class="choices"></div>
-        </div>
+      <div id="quiz-questions" class="hide">
+        <h2 id="question-title"></h2>
+        <div id="multiple-choices" class="choices"></div>
+      </div>
 
-        <div id="end" class="hide">
-            <h2>You're finished!</h2>
-            <p>Your final score is <span id="score"></span>.</p>
-            <p>Enter your intitials: <input type="text" id="intitials" max="4" />
-                <button id="submit">Submit</button></p>
-        </div>
+      <div id="end-screen" class="hide">
+        <h2>You're Finished!</h2>
+        <p>Your final score is <span id="final-score"></span>.</p>
+        <p>Enter initials: <input type="text" id="enter-initials" max="4" />
+          <button id="submit-initials">Submit</button></p>
+      </div>
 
-        <div id="feedback" class="feedback hide"></div>
+      <div id="feedback" class="feedback hide"></div>
     </div>
 
     <script src="./assets/js/question_bank.js"></script>
     <script src="./assets/js/logic.js"></script>
-</body>
+  </body>
 </html>
